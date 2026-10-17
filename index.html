@@ -1,11 +1,532 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Codex 中文入门指南：工作方式、快速开始、Java 提示词和代码验收。"><title>Codex · 中文入门手册</title><style>
-*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:#111610;color:#f0f4e9;font:15px/1.85 system-ui}a{color:inherit;text-decoration:none}header{position:sticky;top:0;z-index:4;background:#111610f5;border-bottom:1px solid #34412c}.nav,main,footer{max-width:1160px;margin:auto;padding:20px 28px}.nav{display:flex;justify-content:space-between;align-items:center;gap:20px}.brand{font-weight:700;font-size:23px}.green,.over{color:#d4fa8d}nav{display:flex;gap:25px;font-size:13px;color:#aebba0}.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center;padding:75px 0 80px}.over{font:11px monospace;letter-spacing:2px}h1{font-size:clamp(43px,5vw,66px);line-height:1.25;letter-spacing:-2px;margin:25px 0}p{color:#a9b69a}.hero p{font-size:16px;max-width:460px}.btn,button{display:inline-block;border:1px solid #d4fa8d;background:#d4fa8d;color:#1c2912;padding:11px 20px;border-radius:5px;font:13px system-ui;cursor:pointer}.outline{background:transparent;color:#e0ebd5;border-color:#435237;margin-left:10px}.terminal{background:#1c2517;border:1px solid #485d37;border-radius:12px;transform:rotate(-1deg);box-shadow:0 25px 80px #0005;font:13px/2 monospace}.bar{padding:13px 20px;border-bottom:1px solid #36482b;display:flex;justify-content:space-between;align-items:center;color:#a2b38f;font:11px monospace}.code{padding:26px}.code p{font:inherit}.result{border-left:2px solid #d4fa8d;padding-left:15px}.strip{display:flex;justify-content:space-between;gap:15px;padding:20px 0;border-block:1px solid #34412c;color:#a9b69a;font-size:12px}section{padding:65px 0;border-bottom:1px solid #34412c}h2{font-size:31px;line-height:1.4;margin:12px 0 30px}h3{font-size:18px;margin:12px 0}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.card{padding:25px;border:1px solid #37492c;background:#1b2416;border-radius:9px}.symbol{font:27px monospace;color:#d4fa8d}.card p{font-size:13px;min-height:95px}.card a,.sources a,details a{color:#d4fa8d;font-size:12px}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}.step{border-top:1px solid #597046;padding-top:18px}.step p{font-size:13px}.lab{display:grid;grid-template-columns:.8fr 1.3fr;gap:45px}.tabs{display:flex;gap:7px;flex-wrap:wrap;margin-top:25px}.tab{padding:8px 12px;background:transparent;color:#b2c39f;border-color:#435237}.tab.active{background:#d4fa8d;color:#1c2912}.panel{border:1px solid #435237;background:#1b2516;border-radius:9px;overflow:hidden}.panel button{padding:5px 10px;font-size:11px}pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:25px;margin:0;font:13px/2 monospace}.checks{display:grid;gap:12px}.checks label{padding:15px;background:#1b2416;border-radius:6px;color:#c4d4b2;font-size:13px;cursor:pointer}input{accent-color:#d4fa8d;margin-right:10px}details{padding:19px 0;border-bottom:1px solid #34412c}summary{cursor:pointer}details p{font-size:13px;max-width:850px}.sources{font-size:12px;color:#98ad83;margin-top:30px}.sources a{margin-right:20px}footer{display:flex;justify-content:space-between;color:#98ad83;font-size:11px;padding-block:30px}a:hover{color:#d4fa8d}:focus-visible{outline:2px solid #d4fa8d;outline-offset:5px}@media(max-width:800px){nav{display:none}.hero,.lab{grid-template-columns:1fr;gap:30px}.hero{padding:40px 0 50px}.terminal{transform:none}.cards{grid-template-columns:1fr}.card p{min-height:0}.steps{grid-template-columns:1fr 1fr}.strip{flex-wrap:wrap}section{padding:45px 0}footer{flex-direction:column}}
-</style></head><body><header><div class="nav"><a class="brand" href="#"><span class="green">›_</span> Codex <small style="font-size:11px;font-weight:400;color:#a9b69a">中文入门手册</small></a><nav aria-label="主导航"><a href="#start">快速开始</a><a href="#use">使用方式</a><a href="#lab">提示词实验室</a><a href="#faq">常见问题</a></nav><a style="font-size:12px" href="https://developers.openai.com/codex" target="_blank" rel="noopener">官方文档 ↗</a></div></header><main><div class="hero"><div><div class="over">● A PRACTICAL GUIDE FOR BUILDERS</div><h1>把想法说清楚，<br>让代码<span class="green">跑起来。</span></h1><p>认识你的 AI 编程搭档。从读懂项目到修复 Bug，用一份清晰的中文指南，开始与 Codex 协作。</p><div style="margin-top:30px"><a class="btn" href="#start">开始第一个任务 ↗</a><a class="btn outline" href="#lab">探索提示词 →</a></div><p style="font:11px monospace;margin-top:25px">面向开发者 · 实用示例 · 非官方指南</p></div><div class="terminal" aria-label="协作过程教学示意"><div class="bar"><span>● ● ●</span><span>codex / spring-boot-demo</span></div><div class="code"><span class="green">›</span> 找出用户接口返回 500 的原因，<br>　修复问题，并补充回归测试。<p>↳ 读取 UserController.java<br>↳ 检查异常堆栈与调用链<br>↳ 修改空值处理，运行相关测试</p><div class="result"><span class="green">✓ 示例结果</span><br>已修复空值导致的异常。<br>新增测试覆盖用户不存在的情况。</div><p style="font-size:11px;margin-bottom:0">REVIEW DIFF → 下一步：检查变更</p></div></div></div><div class="strip"><span>不止生成代码，更是推进任务</span><span>01 / 理解代码库</span><span>02 / 编辑与执行</span><span>03 / 测试与审查</span></div>
-<section id="use"><div class="over">01 — FIND YOUR WORKSPACE</div><h2>在你习惯的地方，开始。</h2><div class="cards"><article class="card"><div class="symbol">▣</div><h3>桌面应用 / IDE</h3><p>打开本地项目文件夹，在桌面应用中选择 Codex；或使用受支持的编辑器扩展，结合文件上下文推进开发。</p><a href="https://developers.openai.com/codex/quickstart" target="_blank" rel="noopener">查看快速开始 ↗</a></article><article class="card"><div class="symbol">›_</div><h3>命令行 CLI</h3><p>在项目目录启动 Codex。适合习惯终端的开发者，在权限允许的范围内读取代码、修改文件并执行命令。</p><a href="https://developers.openai.com/codex/cli" target="_blank" rel="noopener">查看 CLI 安装与使用 ↗</a></article><article class="card"><div class="symbol">☁</div><h3>Codex Cloud</h3><p>在 OpenAI 管理的电脑上运行任务。配置仓库与云环境后开始开发；电脑休眠时，云任务仍可继续。</p><a href="https://help.openai.com/en/articles/20001545-using-codex-cloud" target="_blank" rel="noopener">了解云端任务 ↗</a></article></div><p style="font-size:12px">桌面端也可以使用云任务。客户端是操作入口，本地或云端是任务的执行位置。</p></section>
-<section id="start"><div class="over">02 — YOUR FIRST TASK</div><h2>从一个小任务，建立默契。</h2><div class="steps"><article class="step"><span class="green">01 / 准备项目</span><h3>打开熟悉的仓库</h3><p>保存当前改动，确认启动方式与测试命令。</p></article><article class="step"><span class="green">02 / 建立上下文</span><h3>先读懂项目结构</h3><p>试着说：“介绍项目入口、模块职责和调用链，先不要修改代码。”</p></article><article class="step"><span class="green">03 / 描述目标</span><h3>明确完成标准</h3><p>提供预期行为、复现步骤、涉及文件与限制条件。</p></article><article class="step"><span class="green">04 / 验证结果</span><h3>审查差异与测试</h3><p>检查修改，核对测试，实际走通关键流程后再提交。</p></article></div></section>
-<section id="lab"><div class="lab"><div><div class="over">03 — PROMPT LAB</div><h2>好任务，<br>从好描述开始。</h2><p>目标 + 上下文 + 约束 + 验收。选择一个场景，复制后替换成你的项目细节。</p><div class="tabs" aria-label="提示词场景"><button class="tab active" aria-pressed="true" data-key="debug">修复 Bug</button><button class="tab" aria-pressed="false" data-key="read">读懂项目</button><button class="tab" aria-pressed="false" data-key="feature">开发功能</button><button class="tab" aria-pressed="false" data-key="test">补充测试</button></div><p style="font-size:12px">示例采用 Java / Spring Boot，可按技术栈调整。</p></div><div class="panel"><div class="bar"><span id="title">task / debug.md</span><button id="copy">复制提示词</button></div><pre id="prompt" aria-live="polite">请定位并修复用户查询接口的异常。
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Codex 中文入门指南：工作流、提示词、验收清单与实战范例。"
+    />
+    <title>Codex 中文入门手册</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
 
-上下文：Java / Spring Boot 项目。
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 90px;
+      }
+
+      body {
+        margin: 0;
+        background: #111610;
+        color: #f0f4e9;
+        font: 15px/1.85 system-ui;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 4;
+        background: rgba(17, 22, 16, 0.9);
+        border-bottom: 1px solid rgba(52, 65, 44, 0.85);
+      }
+
+      .nav,
+      main,
+      footer {
+        max-width: 1160px;
+        margin: auto;
+        padding: 20px 28px;
+      }
+
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .brand {
+        font-weight: 700;
+        font-size: 23px;
+      }
+
+      .green,
+      .over {
+        color: #d4fa8d;
+      }
+
+      .nav a {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .nav small {
+        font-size: 11px;
+        font-weight: 400;
+        color: #a9b69a;
+      }
+
+      nav {
+        display: flex;
+        justify-content: flex-end;
+        gap: 20px;
+        font-size: 13px;
+        letter-spacing: 0.06em;
+      }
+
+      nav a {
+        color: #aebba0;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        gap: 60px;
+        align-items: center;
+        padding: 80px 0 60px;
+      }
+
+      h1 {
+        font-size: clamp(43px, 5vw, 66px);
+        line-height: 1.15;
+        letter-spacing: -0.05em;
+        margin: 0 0 25px;
+      }
+
+      .hero p {
+        color: #a9b69a;
+        margin: 0;
+      }
+
+      .hero .cta {
+        display: flex;
+        gap: 16px;
+        margin-top: 28px;
+      }
+
+      .btn,
+      button {
+        display: inline-block;
+        border: 1px solid #d4fa8d;
+        background: #d4fa8d;
+        color: #1c2912;
+        padding: 11px 20px;
+        border-radius: 5px;
+        font: 13px system-ui;
+        cursor: pointer;
+      }
+
+      .btn.outline,
+      .outline {
+        background: transparent;
+        color: #d4fa8d;
+      }
+
+      .terminal {
+        position: relative;
+        background: #1c2517;
+        border: 1px solid #485d37;
+        border-radius: 12px;
+        transform: rotate(-1deg);
+        box-shadow: 0 25px 80px rgba(0, 0, 0, 0.37);
+        font-size: 13px;
+        line-height: 1.85;
+      }
+
+      .bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 13px 20px;
+        border-bottom: 1px solid #36482b;
+        color: #a2b38f;
+        font-size: 11px;
+        font-family: monospace;
+      }
+
+      .code {
+        padding: 26px;
+      }
+
+      .code p {
+        margin: 0;
+        color: #a9b69a;
+      }
+
+      .result {
+        border-left: 2px solid #d4fa8d;
+        padding-left: 15px;
+      }
+
+      .strip {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        padding: 20px 0;
+        border-bottom: 1px solid #34412c;
+        color: #a9b69a;
+        font-size: 12px;
+      }
+
+      section {
+        padding: 65px 0;
+        border-top: 1px solid #34412c;
+      }
+
+      section h2 {
+        font-size: clamp(31px, 4vw, 52px);
+        line-height: 1.2;
+        margin: 10px 0 30px;
+        letter-spacing: -0.04em;
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 17px;
+      }
+
+      .card {
+        padding: 25px;
+        border: 1px solid #37492c;
+        background: #1b2417;
+        border-radius: 9px;
+      }
+
+      .symbol {
+        font-size: 27px;
+        margin-bottom: 10px;
+        color: #d4fa8d;
+      }
+
+      .card h3,
+      .step h3 {
+        margin: 0 0 12px;
+        font-size: 18px;
+      }
+
+      .card p,
+      .step p,
+      .panel p,
+      .source p,
+      summary {
+        margin: 0;
+        color: #a9b69a;
+      }
+
+      .card a,
+      .sources a,
+      .source a,
+      details a {
+        color: #d4fa8d;
+      }
+
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .step {
+        border-top: 1px solid #597046;
+        padding-top: 18px;
+      }
+
+      .step span {
+        display: inline-block;
+        color: #d4fa8d;
+        font-size: 12px;
+        margin-bottom: 10px;
+      }
+
+      .lab {
+        display: grid;
+        grid-template-columns: 1fr 1.6fr;
+        gap: 45px;
+        align-items: start;
+      }
+
+      .tabs {
+        display: flex;
+        gap: 7px;
+        flex-wrap: wrap;
+        margin-top: 25px;
+      }
+
+      .tab {
+        padding: 8px 12px;
+        background: transparent;
+        border: 1px solid #435237;
+        color: #b2c39a;
+        border-radius: 0;
+      }
+
+      .tab.active {
+        background: #d4fa8d;
+        color: #1c2912;
+      }
+
+      .panel {
+        border: 1px solid #435237;
+        background: #1b2417;
+        border-radius: 9px;
+        overflow: hidden;
+      }
+
+      .panel .bar {
+        padding: 13px 20px;
+        background: rgba(28, 41, 18, 0.9);
+      }
+
+      .panel button {
+        margin-left: auto;
+      }
+
+      pre {
+        white-space: pre-wrap;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+        margin: 0;
+        padding: 25px;
+        font: 13px/1.9 monospace;
+        color: #e2ecd0;
+      }
+
+      .checks {
+        display: grid;
+        gap: 12px;
+      }
+
+      .checks label {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        padding: 15px 0;
+        border-bottom: 1px solid #33412c;
+      }
+
+      input[type='checkbox'] {
+        accent-color: #d4fa8d;
+        margin-right: 10px;
+      }
+
+      details {
+        border: 1px solid #37492c;
+        border-radius: 9px;
+        background: #181f15;
+        padding: 16px 18px;
+      }
+
+      summary {
+        cursor: pointer;
+        user-select: none;
+      }
+
+      details p {
+        margin-top: 16px;
+        color: #a9b69a;
+      }
+
+      .sources {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .source {
+        flex: 1 1 220px;
+        min-height: 120px;
+        padding: 18px 20px;
+        border: 1px solid #37492c;
+        border-radius: 9px;
+        background: #1b2417;
+      }
+
+      footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #98ad83;
+        font-size: 11px;
+        padding-top: 35px;
+        padding-bottom: 35px;
+      }
+
+      @media (max-width: 800px) {
+        .hero,
+        .lab,
+        .cards,
+        .steps {
+          grid-template-columns: 1fr;
+        }
+
+        .nav {
+          flex-wrap: wrap;
+        }
+
+        nav {
+          justify-content: flex-start;
+          flex-wrap: wrap;
+        }
+
+        footer {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 8px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="nav">
+        <a class="brand" href="#">
+          <span class="green">›_</span>
+          Codex
+          <small>中文入门手册</small>
+        </a>
+        <nav aria-label="Main navigation">
+          <a href="#start">开始</a>
+          <a href="#use">使用</a>
+          <a href="#lab">实验室</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+        <a class="btn outline" href="https://developers.openai.com/codex" target="_blank" rel="noopener noreferrer">OpenAI Codex</a>
+      </div>
+    </header>
+
+    <main>
+      <div class="hero">
+        <div>
+          <div class="over">A PRACTICAL GUIDE FOR BUILDERS</div>
+          <h1>把“聊天工具”<br />变成“开发伙伴”。</h1>
+          <p>
+            Codex 能在你的项目里做大量重复性工作：定位问题、阅读代码、草拟修复、补充测试、甚至帮助你把变更描述得更清楚。
+          </p>
+          <div class="cta">
+            <a class="btn" href="#start">开始上手</a>
+            <a class="btn outline" href="#lab">查看提示词模板</a>
+          </div>
+          <p style="margin-top: 25px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;">
+            重点：先小任务，再建立默契。
+          </p>
+        </div>
+
+        <div class="terminal" aria-label="Codex example">
+          <div class="bar">
+            <span>codex / spring-boot-demo</span>
+            <span>ready</span>
+          </div>
+          <div class="code">
+            <p><span class="green">▶</span> 在 debug 模式下定位 500 错误</p>
+            <p>• 检查 Controller、Service 与异常处理</p>
+            <p>• 保持其他接口行为不变</p>
+            <p>• 补充回归测试并运行相关测试</p>
+            <div class="result">
+              <p><span class="green">✓</span> 结果：返回约定的 404，而不是 500.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="strip">
+        <span>01 / 现场可用</span>
+        <span>02 / 低成本试错</span>
+        <span>03 / 版本化验证</span>
+      </div>
+
+      <section id="use">
+        <div class="over">01 — FIND YOUR WORKSPACE</div>
+        <h2>在你习惯的地方，开始。</h2>
+
+        <div class="cards">
+          <article class="card">
+            <div class="symbol">▣</div>
+            <h3>桌面应用 / IDE</h3>
+            <p>在你本地开发环境里启动它，最适合代码阅读、修复、调试和回归测试。</p>
+            <p><a href="https://developers.openai.com/codex" target="_blank" rel="noopener noreferrer">官网入口</a></p>
+          </article>
+
+          <article class="card">
+            <div class="symbol">◫</div>
+            <h3>CLI</h3>
+            <p>适合脚本化工作流、快速任务、日志分析和一键执行复现步骤。</p>
+            <p><a href="https://developers.openai.com/codex" target="_blank" rel="noopener noreferrer">CLI 文档</a></p>
+          </article>
+
+          <article class="card">
+            <div class="symbol">◎</div>
+            <h3>Cloud / Hosted</h3>
+            <p>如果你想把上下文放进任务里、快速迭代或协作审阅，云端工作流更方便。</p>
+            <p><a href="https://developers.openai.com/codex" target="_blank" rel="noopener noreferrer">Codex Cloud</a></p>
+          </article>
+        </div>
+      </section>
+
+      <section id="start">
+        <div class="over">02 — YOUR FIRST TASK</div>
+        <h2>从一个小任务，建立默契。</h2>
+
+        <div class="steps">
+          <article class="step">
+            <span class="green">01 / 准备项目</span>
+            <h3>打开你的仓库</h3>
+            <p>确保代码可运行、测试可执行，并说明你希望修复什么、希望避免什么。</p>
+          </article>
+
+          <article class="step">
+            <span class="green">02 / 先做小改动</span>
+            <h3>选一个边界清晰的任务</h3>
+            <p>例如：“修复该接口的 404 状态返回”，而不是“大修系统错误处理”。</p>
+          </article>
+
+          <article class="step">
+            <span class="green">03 / 让它证明自己</span>
+            <h3>要求输出证据</h3>
+            <p>让它说明根因、修改处、受影响范围，并提供最小回归验证。</p>
+          </article>
+
+          <article class="step">
+            <span class="green">04 / 复盘</span>
+            <h3>审阅结果</h3>
+            <p>重点看是否保留了业务契约、是否引入无关重构，以及测试是否覆盖了关键场景。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="lab">
+        <div class="lab">
+          <div>
+            <div class="over">03 — PROMPT LAB</div>
+            <h2>好任务，<br />从好描述开始。</h2>
+            <p>
+              目标 + 上下文 + 约束 + 验收。选择一个场景，复制后改成你的任务就能直接使用。
+            </p>
+          </div>
+
+          <div>
+            <div class="tabs" aria-label="Prompt examples">
+              <button class="tab active" type="button" data-key="debug" aria-pressed="true">debug</button>
+              <button class="tab" type="button" data-key="read" aria-pressed="false">read</button>
+              <button class="tab" type="button" data-key="feature" aria-pressed="false">feature</button>
+              <button class="tab" type="button" data-key="test" aria-pressed="false">test</button>
+            </div>
+
+            <div class="panel">
+              <div class="bar">
+                <span id="title">task / debug.md</span>
+                <button id="copy" type="button">复制</button>
+              </div>
+              <pre id="prompt" aria-live="polite">上下文：Java / Spring Boot 项目。
 复现：GET /users/999，用户不存在时返回 500。
 预期：按项目约定返回 404。
 
@@ -14,10 +535,122 @@
 补充回归测试，并运行相关测试。
 
 完成后说明根因、修改文件与验证结果；
-未能执行的检查请明确列出。</pre></div></div></section>
-<section><div class="lab"><div><div class="over">04 — CHECK BEFORE YOU SHIP</div><h2>让“看起来对”，<br>变成“验证过”。</h2><p>把验证写进任务，也把审查留在工作流里。</p><span class="green" id="progress" aria-live="polite">0 / 4 项已检查</span></div><div class="checks"><label><input type="checkbox">我已读过变更差异，理解关键逻辑。</label><label><input type="checkbox">相关测试已执行，失败原因已明确。</label><label><input type="checkbox">关键流程和异常输入已实际验证。</label><label><input type="checkbox">变更符合任务，未引入凭据或多余文件。</label></div></div></section>
-<section id="faq"><div class="over">05 — GOOD TO KNOW</div><h2>开始前，你可能还想知道。</h2><details><summary>Codex 和普通聊天写代码有什么区别？</summary><p>Codex 面向代码库中的实际开发任务。在所选环境和权限范围内，它可以读取项目、修改文件、运行命令，并根据结果继续推进。你仍需要提供上下文，并检查最终代码与验证结果。</p></details><details><summary>Plus 订阅与 API 是同一套计费吗？</summary><p>ChatGPT 套餐内的 Codex 使用和 API 计费属于不同使用方式。功能、额度与限制可能调整，请查看账号页面和<a href="https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan" target="_blank" rel="noopener">官方套餐说明</a>，本指南不承诺固定任务次数。</p></details><details><summary>Windows 上怎么开始？</summary><p>从官方快速开始页面选择桌面应用，登录后选择 Codex 并打开项目。喜欢终端的话，可按 CLI 文档安装。系统支持、依赖与安装命令以官方当前说明为准。</p></details><details><summary>如何让它遵守项目约定？</summary><p>在仓库 AGENTS.md 中说明构建命令、测试方式、代码约定和重要边界，在任务里补充具体约束。不要写入密码、API 密钥或会话凭据。</p></details><details><summary>结果不符合预期，怎么继续？</summary><p>提供具体报错、复现步骤和预期结果。例如：“UserServiceTest 仍失败，用户不存在时应返回 404，请根据错误继续修复。”本地撤回或修改代码后，也要说明当前状态。</p></details><div class="sources">资料入口：<a href="https://developers.openai.com/codex/quickstart" target="_blank" rel="noopener">快速开始 ↗</a><a href="https://developers.openai.com/codex/prompting" target="_blank" rel="noopener">提示词指南 ↗</a><a href="https://developers.openai.com/codex/cli" target="_blank" rel="noopener">CLI 文档 ↗</a><p>核对日期：2026-10-17。功能、界面与套餐可能变化，请以官方最新资料为准。终端展示与提示词为教学示例。</p></div></section></main><footer><span>›_ Codex 入门手册 / 独立制作的非官方指南</span><a href="#">保持好奇，继续构建。 ↑</a></footer><script>
-const output=document.querySelector('#prompt');
-const prompts={debug:output.textContent,read:'请阅读这个项目，先不要修改代码。\n\n说明项目入口与模块职责；\n梳理从 Controller 到数据库的典型调用链；\n列出本地运行的依赖、配置与测试命令。\n\n引用实际文件路径，区分已确认的信息与推断。',feature:'请为用户列表增加分页查询。\n\n先检查现有接口、DTO 与持久层实现。\n沿用现有权限校验、响应格式与分页约定。\n明确页码、页大小的默认值与合法范围。\n\n验收：覆盖正常分页、空结果与非法参数；\n运行相关测试，说明兼容性影响。',test:'请为 UserService 用户查询补充单元测试。\n\n阅读实现与已有测试，沿用现有测试框架。\n覆盖用户存在、不存在与依赖异常。\n使用可重复数据与必要的 Mock。\n不要为了让测试通过而改变业务行为。\n\n运行测试并报告结果；发现问题请说明证据。'};
-let key='debug';document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{key=b.dataset.key;document.querySelectorAll('.tab').forEach(t=>{t.classList.toggle('active',t===b);t.setAttribute('aria-pressed',String(t===b))});output.textContent=prompts[key];document.querySelector('#title').textContent='task / '+key+'.md';document.querySelector('#copy').textContent='复制提示词'}));document.querySelector('#copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(prompts[key]);document.querySelector('#copy').textContent='已复制 ✓'}catch{const r=document.createRange();r.selectNodeContents(output);getSelection().removeAllRanges();getSelection().addRange(r);document.querySelector('#copy').textContent='已选中，请手动复制'}});document.querySelectorAll('input').forEach(c=>c.addEventListener('change',()=>document.querySelector('#progress').textContent=document.querySelectorAll('input:checked').length+' / 4 项已检查'));
-</script></body></html>
+未能执行的检查请明确列出。</pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="lab">
+          <div>
+            <div class="over">04 — CHECK BEFORE YOU SHIP</div>
+            <h2>让“看起来对”，<br />变成���验证过”。</h2>
+            <p>
+              把验证写进任务，也把审查留在工作流里。你要追踪的不只是“改了什么”，还包括“有没有证明它没坏”——这是工程化的关键。
+            </p>
+          </div>
+
+          <div class="checks">
+            <label><input type="checkbox" /> 是否先复现了 bug？</label>
+            <label><input type="checkbox" /> 是否只改了相关文件，没有无关重构？</label>
+            <label><input type="checkbox" /> 是否补了回归测试，且最小范围通过？</label>
+            <label><input type="checkbox" /> 是否列出未执行的验证项和原因？</label>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq">
+        <div class="over">05 — GOOD TO KNOW</div>
+        <h2>开始前，你可能还想知道。</h2>
+
+        <details>
+          <summary>Codex 和普通聊天写代码有什么区别？</summary>
+          <p>
+            普通聊天更像“草稿助手”；Codex 更强调在一个真实工作区里的持续行动：阅读目标代码、定位上下文、修改文件、补测试、跑验证。
+            它的价值在于把“说了”变成“做了”，并尽量给出可检查的结果。
+          </p>
+        </details>
+
+        <details style="margin-top: 14px;">
+          <summary>什么时候应该让它先“读代码”，不要直接改？</summary>
+          <p>
+            如果问题是跨模块、异常处理或契约变更，先让它阅读相关实现与测试，再动代码往往更稳：这样可以避免无意中把接口语义改坏。
+          </p>
+        </details>
+
+        <details style="margin-top: 14px;">
+          <summary>最容易踩的坑是什么？</summary>
+          <p>
+            1）没有给出上下文；2）让它一次修很多事；3）没有要求输出验证证据；4）忽略未执行检查。要想让它有用，给它“任务边界”和“验收标准”就够了。
+          </p>
+        </details>
+      </section>
+
+      <section>
+        <div class="over">06 — QUICK START RESOURCES</div>
+        <h2>如果你想继续往前走。</h2>
+
+        <div class="sources">
+          <div class="source">
+            <h3>官方说明</h3>
+            <p><a href="https://developers.openai.com/codex" target="_blank" rel="noopener noreferrer">Codex 介绍与快速开始</a></p>
+          </div>
+
+          <div class="source">
+            <h3>工作模式</h3>
+            <p><a href="https://help.openai.com/en/articles/11369314-codex" target="_blank" rel="noopener noreferrer">使用提示词与任务协作</a></p>
+          </div>
+
+          <div class="source">
+            <h3>代码审查</h3>
+            <p><a href="https://help.openai.com/en/articles/11369414" target="_blank" rel="noopener noreferrer">审查、重复验证与改进流程</a></p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>Codex · 让“看起来对”变成“验证过”</span>
+      <a href="#">返回顶部</a>
+    </footer>
+
+    <script>
+      const output = document.querySelector('#prompt');
+      const prompts = {
+        debug: output.textContent,
+        read: '请阅读这个项目，先不要修改代码.\n\n说明项目入口与模块职责；\n梳理从 Controller 到数据库的典型调用链；\n列出核心模块和依赖关系。\n\n请把结论按“入口 -> 调用链 -> 关键组件”结构输出。',
+        feature: '请在保持现有接口不变的前提下，新增一个小功能。\n\n要求：\n- 先阅读现有实现和测试；\n- 说明改动范围；\n- 提供最小改动方案；\n- 补充回归测试。',
+        test: '请先阅读相关测试和实现，再补一个最小回归测试。\n\n要求：\n- 关注真实失败场景；\n- 保持测试可读；\n- 说明为什么这个 case 是必要的。'
+      };
+
+      let key = 'debug';
+
+      document.querySelectorAll('.tab').forEach((button) => {
+        button.addEventListener('click', () => {
+          key = button.dataset.key;
+          document.querySelectorAll('.tab').forEach((tab) => {
+            const active = tab === button;
+            tab.classList.toggle('active', active);
+            tab.setAttribute('aria-pressed', String(active));
+          });
+
+          output.textContent = prompts[key];
+          document.querySelector('#title').textContent = 'task / ' + key + '.md';
+        });
+      });
+
+      document.querySelector('#copy').addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(prompts[key]);
+          document.querySelector('#copy').textContent = '已复制';
+          setTimeout(() => {
+            document.querySelector('#copy').textContent = '复制';
+          }, 1200);
+        } catch (error) {
+          console.error(error);
+        }
+      });
+    </script>
+  </body>
+</html>
